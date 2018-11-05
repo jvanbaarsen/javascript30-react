@@ -6,6 +6,7 @@ import Drumkit from './01-drumkit/Drumkit'
 import Clock from './02-clock/Clock'
 import CssVars from './03-css-vars/CssVars'
 import FlexPanels from './05-flex-panels/FlexPanels'
+import TypeAhead from './06-typeahead/TypeAhead'
 
 const Router = () => (
   <BrowserRouter>
@@ -15,6 +16,7 @@ const Router = () => (
       <Route exact path="/02-clock" component={Clock} />
       <Route exact path="/03-css-vars" component={CssVars} />
       <Route exact path="/05-flex-panels" component={FlexPanels} />
+      <Route exact path="/06-typeahead" component={TypeAhead} />
     </Switch>
   </BrowserRouter>
 )
