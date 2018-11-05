@@ -30,11 +30,12 @@ class TypeAhead extends React.Component {
   }
 
   search = (e) => {
-    const searchTerm = this.searchRef.current.value.toLowerCase()
+    const searchTerm = this.searchRef.current.value
     const cities = this.state.cities
+    const regex = new RegExp(searchTerm, 'gi');
 
     const filteredCities = cities.filter((city) => {
-      return city.city.toLowerCase().includes(searchTerm) || city.state.toLowerCase().includes(searchTerm)
+      return city.city.match(regex) || city.state.match(regex)
     })
     this.setState({ results: filteredCities, searchTerm: searchTerm })
   }
@@ -45,7 +46,7 @@ class TypeAhead extends React.Component {
         {this.state.isLoading && <p>Loading...</p>}
         {!this.state.isLoading &&
           <React.Fragment>
-            <input type="text" ref={this.searchRef} className="search" placeholder="City or State" onKeyUp={this.search} />
+            <input type="text" ref={this.searchRef} className="search" placeholder="City or State" onChange={this.search} />
             <ul className="suggestions">
               {this.state.results.length === 0 &&
                 <React.Fragment>
